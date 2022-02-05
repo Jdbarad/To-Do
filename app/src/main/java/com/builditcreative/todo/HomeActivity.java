@@ -160,7 +160,11 @@ public class HomeActivity extends AppCompatActivity {
                     C = Calendar.getInstance();
                     FDB_data.put("Time", new SimpleDateFormat("hh:mm,dd.MM.yyyy").format(C.getTime()));
                     FDB_data.put("Key", Key);
-                    FDB_data.put("isDone",LM.get((int) i).get("isDone"));
+                    if (LM.size()==0){
+                        FDB_data.put("isDone",false);
+                    }else {
+                        FDB_data.put("isDone",LM.get((int) i).get("isDone"));
+                    }
                     FBDB.child(FDB_data.get("Key").toString()).updateChildren(FDB_data);
                 }
             }
